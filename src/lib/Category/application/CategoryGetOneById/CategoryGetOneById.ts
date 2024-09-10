@@ -34,7 +34,7 @@ export class CategoryGetOneById {
     const transactions = await Promise.all(
       category.transaction_ids.map(async (transaction_id) => {
         const transaction =
-          this.transactionRepository.getOneById(transaction_id);
+          await this.transactionRepository.getOneById(transaction_id);
 
         if (!transaction) {
           throw new TransactionNotFoundError(

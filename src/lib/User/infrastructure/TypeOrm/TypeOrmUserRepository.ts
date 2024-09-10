@@ -8,7 +8,6 @@ import { Repository } from 'typeorm';
 import { UserCreatedAt } from '../../domain/value-objects/UserCreatedAt';
 import { UserUpdatedAt } from '../../domain/value-objects/UserUpdatedAt';
 import { TypeOrmUserMapper } from './TypeOrmUserMapper';
-import { UserPassword } from '../../domain/value-objects/UserPassword';
 
 export class TypeOrmUserRepository implements UserRepository {
   constructor(

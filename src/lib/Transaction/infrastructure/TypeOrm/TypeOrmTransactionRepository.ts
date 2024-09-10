@@ -86,7 +86,12 @@ export class TypeOrmTransactionRepository implements TransactionRepository {
     return transaction ? this.toDomain(transaction) : null;
   }
 
-  async edit(transaction: Transaction): Promise<void> {}
+  async edit(transaction: Transaction): Promise<void> {
+    const transactionEntity = this.toEntity(transaction);
+    await this.transactionRepository.save(transactionEntity);
+  }
 
-  async delete(transaction_id: TransactionId): Promise<void> {}
+  async delete(transaction_id: TransactionId): Promise<void> {
+    await this.transactionRepository.delete(transaction_id.value);
+  }
 }

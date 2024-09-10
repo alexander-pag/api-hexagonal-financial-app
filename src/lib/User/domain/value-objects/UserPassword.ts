@@ -34,7 +34,7 @@ export class UserPassword {
         'User password must contain at least one lowercasse letter.',
       );
     }
-    if (!/[0-9]/.test(password)) {
+    if (!/d/.test(password)) {
       throw new UserPasswordValidationError(
         'User password containt at least one number.',
       );

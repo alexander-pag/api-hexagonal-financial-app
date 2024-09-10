@@ -8,7 +8,6 @@ import { AccountNotFoundError } from 'src/lib/Account/domain/errors/AccountNotFo
 import { TransactionType } from '../../domain/value-objects/TransactionType';
 import { TransactionTypeValidationError } from '../../domain/errors/TransactionTypeValidationError';
 import { TransactionAmount } from '../../domain/value-objects/TransactionAmount';
-import { TransactionDate } from '../../domain/value-objects/TransactionDate';
 import { TransactionUpdatedAt } from '../../domain/value-objects/TransactionUpdatedAt';
 import { TransactionDescription } from '../../domain/value-objects/TransactionDescription';
 import { CategoryRepository } from 'src/lib/Category/domain/repository/CategoryRepository';

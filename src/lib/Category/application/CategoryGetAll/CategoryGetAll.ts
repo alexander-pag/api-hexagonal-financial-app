@@ -1,6 +1,5 @@
 import { UserRepository } from 'src/lib/User/domain/repository/UserRepository';
 import { CategoryRepository } from '../../domain/repository/CategoryRepository';
-import { Category } from '../../domain/entity/Category';
 import { UserNotFoundError } from 'src/lib/User/domain/errors/UserNotFoundError';
 import { CategoryDTO } from '../dto/CategoryDTO';
 import { TransactionId } from 'src/lib/Transaction/domain/value-objects/TransactionId';
@@ -26,7 +25,7 @@ export class CategoryGetAll {
       const transactions = await Promise.all(
         transaction_ids.map(async (transaction_id) => {
           const transaction =
-            this.transactionRepository.getOneById(transaction_id);
+            await this.transactionRepository.getOneById(transaction_id);
 
           if (!transaction) {
             throw new TransactionNotFoundError(
