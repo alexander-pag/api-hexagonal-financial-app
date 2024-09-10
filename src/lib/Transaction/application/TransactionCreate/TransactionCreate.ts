@@ -35,16 +35,16 @@ export class TransactionCreate {
     await this.validateSufficientFunds(account, amount, transactionType);
     const categories = await this.validateCategories(category_ids);
 
-    const newTransaction = new Transaction(
-      new AccountId(account_id),
-      transactionType,
-      new TransactionAmount(amount),
-      new TransactionDate(new Date()),
-      new TransactionCreatedAt(new Date()),
-      new TransactionUpdatedAt(new Date()),
-      categories,
-      new TransactionDescription(description),
-    );
+    const newTransaction = new Transaction({
+      account_id: new AccountId(account_id),
+      type: transactionType,
+      amount: new TransactionAmount(amount),
+      date: new TransactionDate(new Date()),
+      created_at: new TransactionCreatedAt(new Date()),
+      updated_at: new TransactionUpdatedAt(new Date()),
+      category_ids: categories,
+      description: new TransactionDescription(description),
+    });
 
     await this.transactionRepository.create(newTransaction);
   }

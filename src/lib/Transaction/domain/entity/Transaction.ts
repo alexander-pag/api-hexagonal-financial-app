@@ -8,6 +8,18 @@ import { TransactionCreatedAt } from '../value-objects/TransactionCreatedAt';
 import { TransactionUpdatedAt } from '../value-objects/TransactionUpdatedAt';
 import { CategoryId } from 'src/lib/Category/domain/value-objects/CategoryId';
 
+interface TransactionProps {
+  id?: TransactionId;
+  account_id: AccountId;
+  type: TransactionType;
+  amount: TransactionAmount;
+  description?: TransactionDescription;
+  date: TransactionDate;
+  created_at: TransactionCreatedAt;
+  updated_at: TransactionUpdatedAt;
+  category_ids: CategoryId[];
+}
+
 export class Transaction {
   id: TransactionId;
   account_id: AccountId;
@@ -19,17 +31,17 @@ export class Transaction {
   updated_at: TransactionUpdatedAt;
   category_ids: CategoryId[];
 
-  constructor(
-    account_id: AccountId,
-    type: TransactionType,
-    amount: TransactionAmount,
-    date: TransactionDate,
-    created_at: TransactionCreatedAt,
-    updated_at: TransactionUpdatedAt,
-    category_ids: CategoryId[],
-    description?: TransactionDescription,
-    id?: TransactionId,
-  ) {
+  constructor({
+    account_id,
+    type,
+    amount,
+    date,
+    created_at,
+    updated_at,
+    category_ids,
+    description,
+    id,
+  }: TransactionProps) {
     this.id = id;
     this.account_id = account_id;
     this.type = type;

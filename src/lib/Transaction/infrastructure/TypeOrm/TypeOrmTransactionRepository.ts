@@ -28,17 +28,17 @@ export class TypeOrmTransactionRepository implements TransactionRepository {
       (category) => new CategoryId(category.id),
     );
 
-    return new Transaction(
-      new AccountId(transactionEntity.account_id),
-      transactionType,
-      new TransactionAmount(transactionEntity.amount),
-      new TransactionDate(transactionEntity.date),
-      new TransactionCreatedAt(transactionEntity.created_at),
-      new TransactionUpdatedAt(transactionEntity.updated_at),
+    return new Transaction({
+      account_id: new AccountId(transactionEntity.account_id),
+      type: transactionType,
+      amount: new TransactionAmount(transactionEntity.amount),
+      date: new TransactionDate(transactionEntity.date),
+      created_at: new TransactionCreatedAt(transactionEntity.created_at),
+      updated_at: new TransactionUpdatedAt(transactionEntity.updated_at),
       category_ids,
-      new TransactionDescription(transactionEntity.description),
-      new TransactionId(transactionEntity.id),
-    );
+      description: new TransactionDescription(transactionEntity.description),
+      id: new TransactionId(transactionEntity.id),
+    });
   }
 
   private toEntity(transaction: Transaction): TypeOrmTransactionEntity {

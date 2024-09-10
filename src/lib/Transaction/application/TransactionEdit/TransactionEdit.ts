@@ -72,19 +72,19 @@ export class TransactionEdit {
       }),
     );
 
-    const updatedTransaction = new Transaction(
-      accountExists.id,
-      transactionType,
-      amount ? new TransactionAmount(amount) : transactionExists.amount,
-      transactionExists.date,
-      transactionExists.created_at,
-      new TransactionUpdatedAt(new Date()),
-      category_ids ? categories : transactionExists.category_ids,
-      description
+    const updatedTransaction = new Transaction({
+      account_id: accountExists.id,
+      type: transactionType,
+      amount: amount ? new TransactionAmount(amount) : transactionExists.amount,
+      date: transactionExists.date,
+      created_at: transactionExists.created_at,
+      updated_at: new TransactionUpdatedAt(new Date()),
+      category_ids: category_ids ? categories : transactionExists.category_ids,
+      description: description
         ? new TransactionDescription(description)
         : transactionExists.description,
-      new TransactionId(id),
-    );
+      id: new TransactionId(id),
+    });
 
     await this.transactionRepository.edit(updatedTransaction);
   }
